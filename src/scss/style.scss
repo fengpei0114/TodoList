@@ -1,0 +1,258 @@
+body{
+    margin:0;
+    padding:0;
+}
+html{
+    height:100%;
+    background-image : url('../images/background.jpg');
+    background-size : 100% 100%;
+    background-repeat : no-repeat;
+}
+.comment{
+    text-align : center;
+}
+.todos-title{
+    margin:0 auto;
+    color : gray;
+    font-size : 70px;
+    font-weight: 100;
+}
+.todo-options{
+    font-size:13px;
+    &__todo-input{
+        display: inline-block;
+        vertical-align:top;
+        width : 500px;
+        height : 50px;
+        border-width: 0px;
+        color:black;
+        outline:none;
+        padding:0px 0px 0px 0px;
+    }
+    &__todo-list{
+        display: inline-block;
+        width : 450px;
+        height : 50px;
+        line-height: 50px;
+        background-color: white;
+        border-top-style: solid;
+        border-top-color:gray;
+        border-top-width: 1px;
+        padding:0px 0px 0px 0px;
+        text-align:left;
+        &--complete{
+            color:gray;
+            text-decoration:line-through;
+        }
+        &--uncomplete{
+            color:black;
+        }
+    }
+    &__arrow{
+        display: inline-block;
+        vertical-align:top;
+        height:50px;
+        &--checkimg{
+            background-color: white;
+            height:50px;
+            border:none;
+            width:50px;
+        }
+        &--nodata{
+            background-color: white;
+            border:none;
+            height:50px;
+            width:50px;
+        }
+    }
+    &__checkbox{
+        display: inline-block;
+        vertical-align:top;
+        background-color: white;
+        height:50px;
+        border-top-style: solid;
+        border-top-color:gray;
+        border-top-width: 1px;
+        &--unchecked{
+            border:none;
+            margin:0 auto;
+            height:50px;
+            width:50px;
+        }
+        &--checked{
+            border:none;
+            margin:0 auto;
+            height:50px;
+            width:50px;
+        }
+    }
+    &__delete{
+        display: inline-block;
+        vertical-align:top;
+        height:50px;
+        border-top-style: solid;
+        border-top-color:gray;
+        border-top-width: 1px;
+        &--unhover{
+            background-color: white;
+            border:none;
+            height:50px;
+            width:50px;
+        }
+        &--hover{
+            background-color: white;
+            border:none;
+            outline:none;
+            padding:0px 0px 0px 0px;
+            height:50px;
+            color:rgb(248, 70, 70);
+            width:50px;
+            line-height:50px;
+        }
+    }
+    &__uncomplete{
+        display: inline-block;
+        border-top-style: solid;
+        border-top-color:gray;
+        border-top-width: 1px;
+        vertical-align:top;
+        line-height: 30px;
+        background-color: white;
+        height:30px;
+        width:100px;
+    }
+    &__clear-operation{
+        display: inline-block;
+        vertical-align:top;
+        line-height: 30px;
+        border:none;
+        border-top-style: solid;
+        border-top-color:gray;
+        border-top-width: 1px;
+        background-color: white;
+        height:30px;
+        width:150px;
+        &--have-content{
+            height:30px;
+            border:none;
+            outline:none;
+        }
+        &--have-content:hover{
+            height:30px;
+            border:none;
+            outline:none;
+            text-decoration: underline
+        }
+        &--no-content{
+            height:30px;
+        }
+    }
+    &__operation{
+        border-top-style: solid;
+        border-top-color:gray;
+        border-top-width: 1px;
+        background:white;
+        display: inline-block;
+        vertical-align:top;
+        width:300px;
+        height:30px;
+        font-size:8px;
+        line-height: 30px;
+        &--allUncheck{
+            display: inline-block;
+            vertical-align:top;
+            margin:0px 1px 0px 1px;
+            border:none;
+            height:30px;
+            outline:none;
+            width:50px;
+        }
+        &--allUncheck:hover{
+            display: inline-block;
+            vertical-align:top;
+            margin:0px 1px 0px 1px;
+            border:1px solid rgb(240, 196, 196);
+            border-radius: 7px;
+            vertical-align:middle;
+            height:20px;
+            width:50px;
+            outline:none;
+        }
+        &--allCheck{
+            display: inline-block;
+            vertical-align:top;
+            margin:0px 1px 0px 1px;
+            border:1px solid rgb(236, 164, 164);
+            border-radius: 7px;
+            vertical-align:middle;
+            height:20px;
+            width:50px;
+            outline:none;
+        }
+        &--activeUncheck{
+            display: inline-block;
+            vertical-align:top;
+            margin:0px 1px 0px 1px;
+            border:none;
+            height:30px;
+            width:50px;
+            outline:none;
+        }
+        &--activeUncheck:hover{
+            display: inline-block;
+            vertical-align:top;
+            margin:0px 1px 0px 1px;
+            border:1px solid rgb(240, 196, 196);
+            border-radius: 7px;
+            vertical-align:middle;
+            height:20px;
+            width:50px;
+            outline:none;
+        }
+        &--activeCheck{
+            display: inline-block;
+            vertical-align:top;
+            margin:0px 1px 0px 1px;
+            border:1px solid rgb(236, 164, 164);
+            border-radius: 7px;
+            vertical-align:middle;
+            height:20px;
+            width:50px;
+            outline:none;
+        }
+        &--completedUncheck{
+            display: inline-block;
+            vertical-align:top;
+            margin:0px 1px 0px 1px;
+            border:none;
+            height:30px;
+            width:100px;
+            outline:none;
+        }
+        &--completedUncheck:hover{
+            margin:0px 1px 0px 1px;
+            border:1px solid rgb(240, 196, 196);
+            border-radius: 7px;
+            vertical-align:middle;
+            height:20px;
+            width:100px;
+            outline:none;
+        }
+        &--completedCheck{
+            margin:0px 1px 0px 1px;
+            border:1px solid rgb(236, 164, 164);
+            border-radius: 7px;
+            vertical-align:middle;
+            height:20px;
+            width:100px;
+            outline:none;
+        }
+    }
+}
+.statement-text{
+    font-size:13px;
+    color:gray;
+}
+input::-webkit-input-placeholder { /* WebKit browsers */ 
+    color: gray; 
+}   
