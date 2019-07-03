@@ -2,14 +2,14 @@ import React from 'react'
 import '../../../scss/style.scss'
 import AllButton from './AllButton/AllButton.js'
 
-class TodoOperation extends React.Component{
+class TodoOperationBar extends React.Component{
     constructor(props){
         super(props);
         this.state = {
             chooseClearComplete:false,
-            allCheck:true,
-            activeCheck:false,
-            completeCheck:false
+            allChecked:true,
+            activeChecked:false,
+            completeChecked:false
         }
     }
     deleteAllList(e){
@@ -20,37 +20,37 @@ class TodoOperation extends React.Component{
     }
     onClickAllButton(){
         const info = {
-            isAll:true,
-            completeStatus:false
+            hasAllButtonChecked:true,
+            hasCompleteButtonChecked:false
         }
         this.setState({
-            allCheck:true,
-            activeCheck:false,
-            completeCheck:false
+            allChecked:true,
+            activeChecked:false,
+            completeChecked:false
         })
         this.props.changeTodoOperation(info);
     }
     onClickActiveButton(){
         const info = {
-            isAll:false,
-            completeStatus:false
+            hasAllButtonChecked:false,
+            hasCompleteButtonChecked:false
         }
         this.setState({
-            allCheck:false,
-            activeCheck:true,
-            completeCheck:false
+            allChecked:false,
+            activeChecked:true,
+            completeChecked:false
         })
         this.props.changeTodoOperation(info);
     }
     onClickCompleteCheck(){
         const info = {
-            isAll:false,
-            completeStatus:true
+            hasAllButtonChecked:false,
+            hasCompleteButtonChecked:true
         }
         this.setState({
-            allCheck:false,
-            activeCheck:false,
-            completeCheck:true
+            allChecked:false,
+            activeChecked:false,
+            completeChecked:true
         })
         this.props.changeTodoOperation(info);
     }
@@ -69,17 +69,17 @@ class TodoOperation extends React.Component{
                 </div>
                 <div className = "todo-options__operation">
                         <button 
-                            className = {this.state.allCheck ? "todo-options__operation--allCheck" : "todo-options__operation--allUncheck"}
+                            className = {this.state.allChecked ? "todo-options__operation--allCheck" : "todo-options__operation--allUncheck"}
                             onClick = {() => {this.onClickAllButton()}}>
                             All
                         </button>
                         <button 
-                            className = {this.state.activeCheck ? "todo-options__operation--activeCheck" : "todo-options__operation--activeUncheck"}
+                            className = {this.state.activeChecked ? "todo-options__operation--activeCheck" : "todo-options__operation--activeUncheck"}
                             onClick = {(e) => {this.onClickActiveButton()}}>
                             Active
                         </button>
                         <button 
-                            className = {this.state.completeCheck ? "todo-options__operation--completedCheck" : "todo-options__operation--completedUncheck"}
+                            className = {this.state.completeChecked ? "todo-options__operation--completedCheck" : "todo-options__operation--completedUncheck"}
                             onClick = {(e) => {this.onClickCompleteCheck()}}>
                             Completed
                         </button>
@@ -94,4 +94,4 @@ class TodoOperation extends React.Component{
     }
 }
 
-export default TodoOperation
+export default TodoOperationBar

@@ -10,17 +10,17 @@ class TodoList extends React.Component{
             isHover:false
         }
     };
-    onChangeComplete(e){
-        this.props.changeComplete(this.props.message.id);
+    changeTodoItemComplete(e){
+        this.props.changeTodoItemComplete(this.props.message.id);
     }
-    deleteTodoList(e){
-        this.props.deleteTodoList(this.props.message.id);
+    deleteTodoItem(e){
+        this.props.deleteTodoItem(this.props.message.id);
     }
     render(){
         const deleteContent = this.state.isHover?(
             <button 
                 className = "todo-options__delete--hover"
-                onClick = {(e) => {this.deleteTodoList(e)}}>X
+                onClick = {(e) => {this.deleteTodoItem(e)}}>X
             </button>
         ):(
             <div className = "todo-options__delete--unhover">
@@ -31,7 +31,7 @@ class TodoList extends React.Component{
                 onMouseLeave = {(e)=>{this.setState({isHover:false})}}>
                 <div 
                     className = "todo-options__checkbox"
-                    onClick = {(e) => {this.onChangeComplete(e)}}>
+                    onClick = {(e) => {this.changeTodoItemComplete(e)}}>
                     <img className = {this.props.message.isComplete ? "todo-options__checkbox--unchecked" : "todo-options__checkbox--unchecked"}
                         src = {this.props.message.isComplete ? choose : unchoose}
                     /> 

@@ -3,7 +3,7 @@ import '../../../scss/style.scss'
 import arraw_check from '../../../images/arraw_check.png'
 import arraw_uncheck from '../../../images/arraw_uncheck.png'
 
-class TodoInput extends React.Component{
+class NewTodo extends React.Component{
     constructor(props){
         super(props);
         this.state={
@@ -56,4 +56,4 @@ class TodoInput extends React.Component{
     }
 }
 
-export default TodoInput
+export default NewTodo

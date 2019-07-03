@@ -1,7 +1,7 @@
 import React from 'react'
 import '../../scss/style.scss'
-import TodoTitle from '../TodoTitle/TodoTitle.js.js'
-import TodoOptions from '../TodoOptions/TodoOptions.js'
+import TodoTitle from '../TodoTitle/TodoTitle.js'
+import TodoMainPart from '../TodoMainPart/TodoMainPart.js'
 import Info from '../Info/Info.js'
 
 class TodoListDemo extends React.Component{
@@ -9,7 +9,7 @@ class TodoListDemo extends React.Component{
         return(
             <div className = "comment">
                 <TodoTitle />
-                <TodoOptions />
+                <TodoMainPart />
                 <Info />
             </div>
         )
