@@ -1,9 +1,9 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import './scss/style.scss'
-import TodoApp from './components/TodoApp/TodoApp.js'
+import TodoListDemo from './components/TodoListDemo/TodoListDemo.js'
 
 ReactDOM.render(
-    <TodoApp />,
+    <TodoListDemo />,
     document.getElementById('root')
 )

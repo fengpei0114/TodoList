@@ -1,22 +1,22 @@
 import React from 'react'
 import '../../scss/style.scss'
-import TodoInput from './TodoInput/TodoInput.js'
+import NewTodo from './NewTodo/newTodo.js'
 import TodoList from './TodoList/TodoList.js'
-import TodoOperation from './TodoOperation/TodoOperation.js'
+import TodoOperationBar from './TodoOperationBar/TodoOperationBar.js'
 
-class TodoOptions extends React.Component{
+class TodoMainPart extends React.Component{
     
     constructor(){
         super();
         this.state = {
             existContent:false,
-            arrowCheckStatus:false,
+            isSelectAll:false,
             content:[],
-            uncompleteSum:0,
-            todoSum:0,
-            completeSum:0,
-            completeStatus:false,
-            isAll:true
+            uncompletedItemCount:0,
+            todoItemUniqueId:0,
+            completedSum:0,
+            hasCompleteButtonChecked:false,
+            hasAllButtonChecked:true
         }
     }
     onChangeContent(stateName){
@@ -24,21 +24,21 @@ class TodoOptions extends React.Component{
             content:[
                 ...this.state.content,
                 {
-                    id:this.state.todoSum+1,
+                    id:this.state.todoItemUniqueId+1,
                     title:stateName,
                     isComplete:false
                 }
             ],
-            todoSum : this.state.todoSum+1,
-            uncompleteSum:this.state.uncompleteSum+1,
+            todoSum : this.state.todoItemUniqueId+1,
+            uncompleteSum:this.state.uncompletedItemCount+1,
             existContent:true
         })
     }
     onChangeArrowCheckStatus(){
         let data = this.state.content;
-        let uncompleted = this.state.uncompleteSum;
-        let completed = this.state.completeSum;
-        if(this.state.arrowCheckStatus){
+        let uncompleted = this.state.uncompletedItemCount;
+        let completed = this.state.completedSum;
+        if(this.state.isSelectAll){
             data.forEach((item,index)=>{
                 item.isComplete = false;
                 uncompleted = uncompleted + 1;
@@ -53,16 +53,16 @@ class TodoOptions extends React.Component{
         }
         this.setState({
             content:data,
-            arrowCheckStatus:!this.state.arrowCheckStatus,
+            arrowCheckStatus:!this.state.isSelectAll,
             uncompleteSum:uncompleted,
             completeSum:completed
         })
     }
     onChangeComplete(id){
         let data = this.state.content;
-        let uncomplete = this.state.uncompleteSum;
-        let complete = this.state.completeSum;
-        let arrowCheck = this.state.arrowCheckStatus;
+        let uncomplete = this.state.uncompletedItemCount;
+        let complete = this.state.completedSum;
+        let arrowCheck = this.state.isSelectAll;
         data.forEach((item,index) => {
             if(item.id == id){
                 if(item.isComplete){
@@ -85,7 +85,7 @@ class TodoOptions extends React.Component{
     }
     deleteTodoList(id){
         let data = this.state.content.filter(item => item.id != id);
-        let arrowCheckStatusChange = this.state.arrowCheckStatus;
+        let arrowCheckStatusChange = this.state.isSelectAll;
         let existContentChange = this.state.existContent;
 
         if(data.length == 0){
@@ -102,8 +102,8 @@ class TodoOptions extends React.Component{
     
     deleteAllList(){
         let data = this.state.content;
-        let uncompleteSumChange = this.state.uncompleteSum;
-        let arrowCheckStatusChange = this.state.arrowCheckStatus;
+        let uncompleteSumChange = this.state.uncompletedItemCount;
+        let arrowCheckStatusChange = this.state.isSelectAll;
         let existContentChange = this.state.existContent;
         data = data.filter(item => !item.isComplete);
         data.forEach((item)=>{})
@@ -127,8 +127,8 @@ class TodoOptions extends React.Component{
 
     render(){
         let listItems;
-        let data = this.state.isAll ? this.state.content: 
-            (this.state.completeStatus ? this.state.content.filter(item => item.isComplete) : this.state.content.filter(item => !item.isComplete));
+        let data = this.state.hasAllButtonChecked ? this.state.content: 
+            (this.state.hasCompleteButtonChecked ? this.state.content.filter(item => item.isComplete) : this.state.content.filter(item => !item.isComplete));
         listItems = data.map((item,index) =>
             <TodoList 
                 key={index} 
@@ -137,20 +137,20 @@ class TodoOptions extends React.Component{
                 deleteTodoList = {(this.deleteTodoList.bind(this))}/>
         );
         const todoOperation = !this.state.existContent ? null : (
-            <TodoOperation
-                uncompleteSum = {this.state.uncompleteSum}
-                completeSum = {this.state.completeSum}
-                completeStatus = {this.state.completeStatus}
+            <TodoOperationBar
+                uncompleteSum = {this.state.uncompletedItemCount}
+                completeSum = {this.state.completedSum}
+                completeStatus = {this.state.hasCompleteButtonChecked}
                 existContent = {this.state.existContent}
                 deleteAllList = {this.deleteAllList.bind(this)}
                 changeTodoOperation = {info => this.changeTodoOperation(info)}
             />);
         return(
             <div className="todo-options">
-                <TodoInput 
+                <NewTodo 
                     onEnterPress = {this.onChangeContent.bind(this)}
                     onChangeArrow = {this.onChangeArrowCheckStatus.bind(this)}
-                    arrowCheckStatus = {this.state.arrowCheckStatus}
+                    arrowCheckStatus = {this.state.isSelectAll}
                     existContent = {this.state.existContent}
                 />
                 {listItems}
@@ -160,4 +160,4 @@ class TodoOptions extends React.Component{
     }
 }
 
-export default TodoOptions
+export default TodoMainPart

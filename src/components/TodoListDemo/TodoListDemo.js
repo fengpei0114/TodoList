@@ -1,19 +1,19 @@
 import React from 'react'
 import '../../scss/style.scss'
-import TodosTitle from '../TodosTitle/TodosTitle.js'
+import TodoTitle from '../TodoTitle/TodoTitle.js.js'
 import TodoOptions from '../TodoOptions/TodoOptions.js'
-import StatementText from '../StatementText/StatementText.js'
+import Info from '../Info/Info.js'
 
-class Comment extends React.Component{
+class TodoListDemo extends React.Component{
     render(){
         return(
             <div className = "comment">
-                <TodosTitle />
+                <TodoTitle />
                 <TodoOptions />
-                <StatementText />
+                <Info />
             </div>
         )
     }
 }
 
-export default Comment
+export default TodoListDemo
