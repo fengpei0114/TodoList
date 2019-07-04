@@ -1,27 +1,16 @@
 import React from 'react'
-import '../../../scss/style.scss'
-import arraw_check from '../../../images/arraw_check.png'
-import arraw_uncheck from '../../../images/arraw_uncheck.png'
+import '../../scss/style.scss'
+import arraw_check from '../../images/arraw_check.png'
+import arraw_uncheck from '../../images/arraw_uncheck.png'
+import NewTodoInput from './NewTodoInput/NewTodoInput.js'
 
 class NewTodo extends React.Component{
     constructor(props){
         super(props);
-        this.state={
-            content:''
-        }
     }
     addTodoItemContent(e){
-        if(e.keyCode == 13){
-            this.setState({
-                content:''
-            })
-            return this.props.addTodoItemContent(this.state.content);
-        }
-    }
-    inputChange(e){
-        this.setState({
-            content:e.target.value
-        })
+
+        return this.props.addTodoItemContent(e);
     }
     IsAllToggleChecked(e){
         this.props.IsAllToggleChecked();
@@ -43,13 +32,8 @@ class NewTodo extends React.Component{
                     onClick = {(e)=>this.IsAllToggleChecked(e)}>
                     {img}
                 </div>
-                <input 
-                    className = "todo-options__todo-input"
-                    type = "text"
-                    onKeyDown = {(e) => this.addTodoItemContent(e)}
-                    onChange = {(e) => this.inputChange(e)}
-                    placeholder="What needs to be done?"
-                    value = {this.state.content}
+                <NewTodoInput 
+                    addTodoItemContent = {e => this.addTodoItemContent(e)}
                 />
             </div>
         )

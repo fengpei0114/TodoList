@@ -1,6 +1,7 @@
 import React from 'react'
 import '../../scss/style.scss'
-import NewTodo from './NewTodo/newTodo.js'
+// import NewTodo from './NewTodo/newTodo.js'
+import NewTodo from '../NewTodo/NewTodo.js'
 import TodoList from './TodoList/TodoList.js'
 import TodoOperationBar from './TodoOperationBar/TodoOperationBar.js'
 
