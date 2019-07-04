@@ -23,7 +23,7 @@ class NewTodoInput extends React.Component{
     }
     render(){
         return (<input 
-            className = "todo-options__todo-input"
+            className = "new-todo__new-todo-input"
             type = "text"
             onKeyDown = {(e) => this.addTodoItemContent(e)}
             onChange = {(e) => this.inputChange(e)}

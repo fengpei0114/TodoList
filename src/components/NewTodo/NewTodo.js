@@ -3,6 +3,7 @@ import '../../scss/style.scss'
 import arraw_check from '../../images/arraw_check.png'
 import arraw_uncheck from '../../images/arraw_uncheck.png'
 import NewTodoInput from './NewTodoInput/NewTodoInput.js'
+import AllToggle from '../AllToggle/AllToggle.js'
 
 class NewTodo extends React.Component{
     constructor(props){
@@ -11,7 +12,7 @@ class NewTodo extends React.Component{
     addTodoItemContent(e){
         return this.props.addTodoItemContent(e);
     }
-    IsAllToggleChecked(e){
+    IsAllToggleChecked(){
         this.props.IsAllToggleChecked();
     }
     render(){
@@ -25,12 +26,17 @@ class NewTodo extends React.Component{
                 className = "todo-options__arrow--nodata"
             ></div>);
         return(
-            <div  className="todo-options">
-                <div 
+            <div  className="new-todo">
+                {/* <div 
                     className = "todo-options__arrow"
-                    onClick = {(e)=>this.IsAllToggleChecked(e)}>
+                    IsAllToggleChecked = {()=>this.IsAllToggleChecked()}>
                     {img}
-                </div>
+                </div> */}
+                <AllToggle
+                    existListItem = {this.props.existListItem}
+                    isSelectAll = {this.props.isSelectAll}
+                    IsAllToggleChecked = {()=>{this.IsAllToggleChecked()}}
+                />
                 <NewTodoInput 
                     addTodoItemContent = {e => this.addTodoItemContent(e)}
                 />

@@ -17,9 +17,13 @@ html{
     font-size : 70px;
     font-weight: 100;
 }
-.todo-options{
+.new-todo{
     font-size:13px;
-    &__todo-input{
+    background:white;
+    height:50px;
+    width:550px;
+    margin:0 auto;
+    &__new-todo-input{
         display: inline-block;
         vertical-align:top;
         width : 500px;
@@ -29,24 +33,48 @@ html{
         outline:none;
         padding:0px 0px 0px 0px;
     }
-    &__todo-list{
+    &__arrow{
+        &--show{
+            display: inline-block;
+            vertical-align:top;
+            height:50px;
+            background-color: white;
+            height:50px;
+            border:none;
+            width:50px;
+        }
+        &--hide{
+            visibility : hidden;
+            width : 50px;
+        }
+    }
+}
+.arraw{
+    &--show{
         display: inline-block;
-        width : 450px;
-        height : 50px;
-        line-height: 50px;
+        vertical-align:top;
+        height:50px;
         background-color: white;
-        border-top-style: solid;
-        border-top-color:gray;
-        border-top-width: 1px;
+        height:50px;
+        border:none;
+        width:50px;
+    }
+    &--hide{
+        visibility : hidden;
+        width : 50px;
+    }
+}
+.todo-options{
+    font-size:13px;
+    &__todo-input{
+        display: inline-block;
+        vertical-align : top;
+        width : 500px;
+        height : 50px;
+        border-width: 0px;
+        color:black;
+        outline:none;
         padding:0px 0px 0px 0px;
-        text-align:left;
-        &--complete{
-            color:gray;
-            text-decoration:line-through;
-        }
-        &--uncomplete{
-            color:black;
-        }
     }
     &__arrow{
         display: inline-block;
@@ -63,51 +91,6 @@ html{
             border:none;
             height:50px;
             width:50px;
-        }
-    }
-    &__checkbox{
-        display: inline-block;
-        vertical-align:top;
-        background-color: white;
-        height:50px;
-        border-top-style: solid;
-        border-top-color:gray;
-        border-top-width: 1px;
-        &--unchecked{
-            border:none;
-            margin:0 auto;
-            height:50px;
-            width:50px;
-        }
-        &--checked{
-            border:none;
-            margin:0 auto;
-            height:50px;
-            width:50px;
-        }
-    }
-    &__delete{
-        display: inline-block;
-        vertical-align:top;
-        height:50px;
-        border-top-style: solid;
-        border-top-color:gray;
-        border-top-width: 1px;
-        &--unhover{
-            background-color: white;
-            border:none;
-            height:50px;
-            width:50px;
-        }
-        &--hover{
-            background-color: white;
-            border:none;
-            outline:none;
-            padding:0px 0px 0px 0px;
-            height:50px;
-            color:rgb(248, 70, 70);
-            width:50px;
-            line-height:50px;
         }
     }
     &__uncomplete{
