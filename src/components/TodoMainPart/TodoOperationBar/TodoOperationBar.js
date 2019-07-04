@@ -12,8 +12,8 @@ class TodoOperationBar extends React.Component{
             completeChecked:false
         }
     }
-    deleteAllList(e){
-        this.props.deleteAllList();
+    deleteAllCompletedTodoItem(e){
+        this.props.deleteAllCompletedTodoItem();
     }
     onChangeCompleteStatus(e){
         this.props.onChangeCompleteStatus(e);
@@ -28,7 +28,7 @@ class TodoOperationBar extends React.Component{
             activeChecked:false,
             completeChecked:false
         })
-        this.props.changeTodoOperation(info);
+        this.props.changeFilterOptions(info);
     }
     onClickActiveButton(){
         const info = {
@@ -40,7 +40,7 @@ class TodoOperationBar extends React.Component{
             activeChecked:true,
             completeChecked:false
         })
-        this.props.changeTodoOperation(info);
+        this.props.changeFilterOptions(info);
     }
     onClickCompleteCheck(){
         const info = {
@@ -52,10 +52,10 @@ class TodoOperationBar extends React.Component{
             activeChecked:false,
             completeChecked:true
         })
-        this.props.changeTodoOperation(info);
+        this.props.changeFilterOptions(info);
     }
     render(){
-        const clearComplete = this.props.completeSum != 0 ?(
+        const clearComplete = this.props.completedItemSum != 0 ?(
             <button className = "todo-options__clear-operation--have-content">
                 clear completed
             </button>):(
@@ -65,7 +65,7 @@ class TodoOperationBar extends React.Component{
         return (
             <div>
                 <div className = "todo-options__uncomplete">
-                    {this.props.uncompleteSum} item left
+                    {this.props.uncompletedItemCount} item left
                 </div>
                 <div className = "todo-options__operation">
                         <button 
@@ -86,7 +86,7 @@ class TodoOperationBar extends React.Component{
                 </div>
                 <div 
                     className = "todo-options__clear-operation"
-                    onClick = {(e) => {this.deleteAllList(e)}}>
+                    onClick = {(e) => {this.deleteAllCompletedTodoItem(e)}}>
                     {clearComplete}
                 </div>
             </div>

@@ -10,12 +10,12 @@ class NewTodo extends React.Component{
             content:''
         }
     }
-    onEnterPress(e){
+    addTodoItemContent(e){
         if(e.keyCode == 13){
             this.setState({
                 content:''
             })
-            return this.props.onEnterPress(this.state.content);
+            return this.props.addTodoItemContent(this.state.content);
         }
     }
     inputChange(e){
@@ -23,14 +23,14 @@ class NewTodo extends React.Component{
             content:e.target.value
         })
     }
-    changeCheck(e){
-        this.props.onChangeArrow();
+    IsAllToggleChecked(e){
+        this.props.IsAllToggleChecked();
     }
     render(){
-        const img = this.props.existContent ? (
+        const img = this.props.existListItem ? (
             <img
                 className = "todo-options__arrow--checkimg"
-                src = {this.props.arrowCheckStatus ? arraw_check : arraw_uncheck}
+                src = {this.props.isSelectAll ? arraw_check : arraw_uncheck}
             />
             ):(
             <div
@@ -40,13 +40,13 @@ class NewTodo extends React.Component{
             <div>
                 <div 
                     className = "todo-options__arrow"
-                    onClick = {(e)=>this.changeCheck(e)}>
+                    onClick = {(e)=>this.IsAllToggleChecked(e)}>
                     {img}
                 </div>
                 <input 
                     className = "todo-options__todo-input"
                     type = "text"
-                    onKeyDown = {(e) => this.onEnterPress(e)}
+                    onKeyDown = {(e) => this.addTodoItemContent(e)}
                     onChange = {(e) => this.inputChange(e)}
                     placeholder="What needs to be done?"
                     value = {this.state.content}

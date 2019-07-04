@@ -58,14 +58,14 @@ class TodoMainPart extends React.Component{
             completedItemSum : completed
         })
     }
-    changeTodoItemComplete(id){
+    changeTodoItemComplete(itemId){
         let data = this.state.content;
         let uncompletedItemCountNew = this.state.content.uncompletedItemCount;
         let completedItemSumNew;
         let isSelectAllNew;
         data.forEach(item=>{
-            if(item.id === id){
-                item.isComplete = item.id === id ? !item.isComplete : item.isComplete;
+            if(item.id === itemId){
+                item.isComplete = item.id === itemId ? !item.isComplete : item.isComplete;
                 uncompletedItemCountNew = !item.isComplete ? (this.state.uncompletedItemCount + 1) : (this.state.uncompletedItemCount - 1);
                 completedItemSumNew = !item.isComplete ? (this.state.completedItemSum - 1) : (this.state.completedItemSum + 1);
                 isSelectAllNew = uncompletedItemCountNew == 0 ? true : false;
@@ -118,25 +118,23 @@ class TodoMainPart extends React.Component{
             <TodoList 
                 key={index} 
                 message = {item}
-                changeTodoItemComplete = {id => this.changeTodoItemComplete(id)}
+                changeTodoItemComplete = {itemId => this.changeTodoItemComplete(itemId)}
                 deleteTodoItem = {itemId => this.deleteTodoItem(itemId)}/>
         );
         const todoOperation = !this.state.existListItem ? null : (
             <TodoOperationBar
-                uncompleteSum = {this.state.uncompletedItemCount}
-                completeSum = {this.state.completedItemSum}
-                completeStatus = {this.state.hasCompleteButtonChecked}
-                existContent = {this.state.existListItem}
-                deleteAllList = {this.deleteAllCompletedTodoItem.bind(this)}
-                changeTodoOperation = {info => this.changeFilterOptions(info)}
+                uncompletedItemCount = {this.state.uncompletedItemCount}
+                completedItemSum = {this.state.completedItemSum}
+                deleteAllCompletedTodoItem = {this.deleteAllCompletedTodoItem.bind(this)}
+                changeFilterOptions = {info => this.changeFilterOptions(info)}
             />);
         return(
             <div className="todo-options">
                 <NewTodo 
-                    onEnterPress = {this.addTodoItemContent.bind(this)}
-                    onChangeArrow = {this.IsAllToggleChecked.bind(this)}
-                    arrowCheckStatus = {this.state.isSelectAll}
-                    existContent = {this.state.existListItem}
+                    addTodoItemContent = {this.addTodoItemContent.bind(this)}
+                    IsAllToggleChecked = {this.IsAllToggleChecked.bind(this)}
+                    isSelectAll = {this.state.isSelectAll}
+                    existListItem = {this.state.existListItem}
                 />
                 {listItems}
                 {todoOperation}
