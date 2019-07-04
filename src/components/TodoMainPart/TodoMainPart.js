@@ -3,7 +3,7 @@ import '../../scss/style.scss'
 // import NewTodo from './NewTodo/newTodo.js'
 import NewTodo from '../NewTodo/NewTodo.js'
 import TodoList from '../TodoList/TodoList.js'
-import TodoOperationBar from './TodoOperationBar/TodoOperationBar.js'
+import TodoOperationBar from '../TodoOperationBar/TodoOperationBar.js'
 
 class TodoMainPart extends React.Component{
     
@@ -30,6 +30,7 @@ class TodoMainPart extends React.Component{
                     isComplete:false
                 }
             ],
+            isSelectAll : false,
             todoItemUniqueId : this.state.todoItemUniqueId+1,
             uncompletedItemCount : this.state.uncompletedItemCount+1,
             existListItem : true
@@ -129,6 +130,8 @@ class TodoMainPart extends React.Component{
             <TodoOperationBar
                 uncompletedItemCount = {this.state.uncompletedItemCount}
                 completedItemCount = {this.state.completedItemCount}
+                hasAllButtonChecked = {this.state.hasAllButtonChecked}
+                hasCompleteButtonChecked = {this.state.hasCompleteButtonChecked}
                 deleteAllCompletedTodoItem = {this.deleteAllCompletedTodoItem.bind(this)}
                 changeFilterOptions = {info => this.changeFilterOptions(info)}
             />);
