@@ -1,5 +1,5 @@
 import React from 'react'
-import '../../../scss/style.scss'
+import './destory.style.scss'
 
 class Destory extends React.Component{
     constructor(props){
@@ -13,7 +13,7 @@ class Destory extends React.Component{
     render(){
         return(
         <button 
-            className = {this.props.isHover ? "todo-list1__destory--hover":"todo-list1__destory--unhover"}
+            className = {this.props.isHover ? "todo-list__destory--hover":"todo-list__destory--unhover"}
             onClick = {() => {this.deleteTodoItem()}}>X
         </button>)
     }

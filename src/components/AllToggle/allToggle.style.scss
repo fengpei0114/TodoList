@@ -1,0 +1,15 @@
+.arrow{
+    &--show{
+        display: inline-block;
+        vertical-align:top;
+        height:50px;
+        background-color: white;
+        height:50px;
+        border:none;
+        width:50px;
+    }
+    &--hide{
+        visibility : hidden;
+        width : 50px;
+    }
+}

@@ -1,5 +1,5 @@
 import React from 'react'
-import '../../scss/style.scss'
+import './todoItemCount.style.scss'
 
 class TodoItemCount extends React.Component{
 

@@ -1,5 +1,5 @@
 import React from 'react'
-import '../../scss/style.scss'
+import './todoList.style.scss'
 import TodoItem from './TodoItem/TodoItem.js'
 import CheckBox from './CheckBox/CheckBox.js'
 import Destory from './Destory/Destory.js'
@@ -20,7 +20,7 @@ class TodoList extends React.Component{
     render(){
         return(
             <div
-                className = "todo-list1" 
+                className = "todo-list" 
                 onMouseEnter = {(e)=>{this.setState({isHover:true})}}
                 onMouseLeave = {(e)=>{this.setState({isHover:false})}}>
                 <CheckBox

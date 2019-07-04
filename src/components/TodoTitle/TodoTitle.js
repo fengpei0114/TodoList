@@ -1,5 +1,5 @@
 import React from 'react'
-import '../../scss/style.scss'
+import './todoTitle.style.scss'
 
 const TodoTitle = ()=>
         <div className = "todos-title">

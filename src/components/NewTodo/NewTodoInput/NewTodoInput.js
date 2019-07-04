@@ -1,5 +1,5 @@
 import React from 'react'
-import '../../../scss/style.scss'
+import './newTodoInput.style.scss'
 
 class NewTodoInput extends React.Component{
     constructor(props){

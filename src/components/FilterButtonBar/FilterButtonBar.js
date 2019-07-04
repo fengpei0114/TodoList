@@ -1,5 +1,5 @@
 import React from 'react'
-import '../../scss/style.scss'
+import './filterButtonBar.style.scss'
 
 class FilterButtonBar extends React.Component{
     constructor(props){

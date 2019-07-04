@@ -1,7 +1,7 @@
 import React from 'react'
-import '../../scss/style.scss'
+import './clearCompleted.style.scss'
 
-class ClearComponent extends React.Component{
+class ClearCompleted extends React.Component{
     constructor(props){
         super(props)
     }
@@ -19,4 +19,4 @@ class ClearComponent extends React.Component{
     }
 }
 
-export default ClearComponent
+export default ClearCompleted

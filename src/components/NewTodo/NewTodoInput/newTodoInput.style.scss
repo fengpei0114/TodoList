@@ -1,0 +1,12 @@
+.new-todo{
+    &__new-todo-input{
+        display: inline-block;
+        vertical-align:top;
+        width : 500px;
+        height : 50px;
+        border-width: 0px;
+        color:black;
+        outline:none;
+        padding:0px 0px 0px 0px;
+    }
+}

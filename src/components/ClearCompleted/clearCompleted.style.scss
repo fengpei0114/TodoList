@@ -1,0 +1,24 @@
+.clear-completed{
+    &--show{
+        float:right;
+        line-height: 30px;
+        height:30px;
+        width:150px;
+        border:none;
+        outline:none;
+    }
+    &--show:hover{
+        float:right;
+        line-height: 30px;
+        height:30px;
+        width:150px;
+        border:none;
+        outline:none;
+        text-decoration: underline
+    }
+    &--hide{
+        visibility: hidden;
+        height:30px;
+        width:150px;
+    }
+}

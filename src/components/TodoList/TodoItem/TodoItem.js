@@ -1,5 +1,5 @@
 import React from 'react'
-import '../../../scss/style.scss'
+import './todoItem.style.scss'
 
 class TodoItem extends React.Component{
     constructor(props){
@@ -8,7 +8,7 @@ class TodoItem extends React.Component{
 
     render(){
         return(
-            <div className = {this.props.message.isComplete?"todo-list1__todo-item--complete":"todo-list1__todo-item--uncomplete"}>
+            <div className = {this.props.message.isComplete?"todo-list__todo-item--complete":"todo-list__todo-item--uncomplete"}>
                 {this.props.message.title}
             </div>
         )

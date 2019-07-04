@@ -1,5 +1,5 @@
 import React from 'react'
-import "../../../scss/style.scss"
+import "./checkBox.style.scss"
 import choose from '../../../images/choose.png'
 import unchoose from '../../../images/unchoose.png'
 
@@ -13,7 +13,7 @@ class CheckBox extends React.Component{
 
     render(){
         return(
-            <img className = "todo-list1__checkbox--unchecked"
+            <img className = "todo-list__checkbox--unchecked"
                 src = {this.props.message.isComplete ? choose : unchoose}
                 onClick = {(e) => {this.changeTodoItemComplete(e)}}
             /> 

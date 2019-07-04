@@ -1,6 +1,5 @@
 import React from 'react'
-import '../../scss/style.scss'
-// import NewTodo from './NewTodo/newTodo.js'
+import './todoMainPart.style.scss'
 import NewTodo from '../NewTodo/NewTodo.js'
 import TodoList from '../TodoList/TodoList.js'
 import TodoOperationBar from '../TodoOperationBar/TodoOperationBar.js'
@@ -104,6 +103,7 @@ class TodoMainPart extends React.Component{
         this.setState({
             content : data,
             uncompleteSum : uncompletedItemCountNew,
+            completedItemCount : 0,
             isSelectAll : isSelectAllNew,
             existListItem : existListItemNew
         })
@@ -136,7 +136,7 @@ class TodoMainPart extends React.Component{
                 changeFilterOptions = {info => this.changeFilterOptions(info)}
             />);
         return(
-            <div>
+            <div className = "todo-main-part">
                 <NewTodo 
                     addTodoItemContent = {this.addTodoItemContent.bind(this)}
                     IsAllToggleChecked = {this.IsAllToggleChecked.bind(this)}

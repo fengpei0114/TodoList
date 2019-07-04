@@ -1,8 +1,8 @@
 import React from'react'
-import '../../scss/style.scss'
+import './info.style.scss'
 
 const Info = ()=>
-        <div className="statement-text">
+        <div className="info">
             <p>Double-click to edit a todo</p>
         </div>
 
