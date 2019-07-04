@@ -9,7 +9,6 @@ class NewTodo extends React.Component{
         super(props);
     }
     addTodoItemContent(e){
-
         return this.props.addTodoItemContent(e);
     }
     IsAllToggleChecked(e){
@@ -26,7 +25,7 @@ class NewTodo extends React.Component{
                 className = "todo-options__arrow--nodata"
             ></div>);
         return(
-            <div>
+            <div  className="todo-options">
                 <div 
                     className = "todo-options__arrow"
                     onClick = {(e)=>this.IsAllToggleChecked(e)}>

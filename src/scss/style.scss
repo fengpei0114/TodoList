@@ -249,6 +249,63 @@ html{
         }
     }
 }
+.todo-list1{
+    background-color: white;
+    margin:0px auto;
+    border-top-style: solid;
+    border-top-color:gray;
+    border-top-width: 1px;
+    height:50px;
+    width:550px;
+    &__todo-item{
+        &--complete{
+            width:450px;
+            height:50px;
+            line-height: 50px;
+            margin:0px auto;
+            display:inline-block;
+            padding:0px 0px 0px 0px;
+            text-align:left;
+            color:gray;
+            text-decoration:line-through;
+        }
+        &--uncomplete{
+            width:450px;
+            height:50px;
+            line-height:50px;
+            margin:0px auto;
+            display:inline-block;
+            padding:0px 0px 0px 0px;
+            text-align:left;
+            color:black;
+        }
+    }
+    &__checkbox{
+        &--unchecked{
+            float:left;
+            border:none;
+            height:50px;
+            width:50px;
+        }
+    }
+    &__destory{
+        &--unhover{
+            visibility: hidden;
+            width:50px;
+        }
+        &--hover{
+            vertical-align:top;
+            float:right;
+            border:none;
+            outline:none;
+            padding:0px 0px 0px 0px;
+            height:50px;
+            color:rgb(248, 70, 70);
+            width:50px;
+            line-height:50px;
+        }
+    }
+}
 .statement-text{
     font-size:13px;
     color:gray;

@@ -2,7 +2,7 @@ import React from 'react'
 import '../../scss/style.scss'
 // import NewTodo from './NewTodo/newTodo.js'
 import NewTodo from '../NewTodo/NewTodo.js'
-import TodoList from './TodoList/TodoList.js'
+import TodoList from '../TodoList/TodoList.js'
 import TodoOperationBar from './TodoOperationBar/TodoOperationBar.js'
 
 class TodoMainPart extends React.Component{
@@ -15,7 +15,7 @@ class TodoMainPart extends React.Component{
             content:[],
             uncompletedItemCount:0,
             todoItemUniqueId:0,
-            completedItemSum:0,
+            completedItemCount:0,
             hasCompleteButtonChecked:false,
             hasAllButtonChecked:true
         }
@@ -37,46 +37,46 @@ class TodoMainPart extends React.Component{
     }
     IsAllToggleChecked(){
         let data = this.state.content;
-        let uncompleted = this.state.uncompletedItemCount;
-        let completed = this.state.completedItemSum;
+        let uncompletedItemCountNew = this.state.uncompletedItemCount;
+        let completedItemCountNew = this.state.completedItemCount;
         if(this.state.isSelectAll){
             data.forEach(item=>{
                 item.isComplete = false;
-                uncompleted = uncompleted + 1;
+                uncompletedItemCountNew = uncompletedItemCountNew + 1;
             })
-            completed = 0;
+            completedItemCountNew = 0;
         }else{
             data.forEach(item=>{
                 item.isComplete = true;
-                completed = completed + 1;
+                completedItemCountNew = completedItemCountNew + 1;
             })
-            uncompleted = 0;
+            uncompletedItemCountNew = 0;
         }
         this.setState({
             content : data,
             isSelectAll : !this.state.isSelectAll,
-            uncompletedItemCount : uncompleted,
-            completedItemSum : completed
+            uncompletedItemCount : uncompletedItemCountNew,
+            completedItemCount : completedItemCountNew
         })
     }
     changeTodoItemComplete(itemId){
         let data = this.state.content;
-        let uncompletedItemCountNew = this.state.content.uncompletedItemCount;
-        let completedItemSumNew;
+        let uncompletedItemCountNew;
+        let completedItemCountNew;
         let isSelectAllNew;
+        
         data.forEach(item=>{
             if(item.id === itemId){
                 item.isComplete = item.id === itemId ? !item.isComplete : item.isComplete;
                 uncompletedItemCountNew = !item.isComplete ? (this.state.uncompletedItemCount + 1) : (this.state.uncompletedItemCount - 1);
-                completedItemSumNew = !item.isComplete ? (this.state.completedItemSum - 1) : (this.state.completedItemSum + 1);
+                completedItemCountNew = !item.isComplete ? (this.state.completedItemCount - 1) : (this.state.completedItemCount + 1);
                 isSelectAllNew = uncompletedItemCountNew == 0 ? true : false;
             }
         })
-        console.log(uncompletedItemCountNew);
         this.setState({
             content : data,
             uncompletedItemCount : uncompletedItemCountNew,
-            completedItemSum : completedItemSumNew,
+            completedItemCount : completedItemCountNew,
             isSelectAll : isSelectAllNew
         })
     }
@@ -84,9 +84,12 @@ class TodoMainPart extends React.Component{
         const data = this.state.content.filter(item => item.id != itemId);
         const isSelectAllNew = data.length === 0 ? false : this.state.isSelectAll;
         const existListItemNew = data.length === 0 ? false : this.state.existListItem;
+        const completedItemCountNew = this.state.content.find(item => item.id == itemId).isComplete ? this.state.completedItemCount - 1 :this.state.completedItemCount;
+        const uncompletedItemCountNew = this.state.content.find(item => item.id == itemId).isComplete ? this.state.uncompletedItemCount : this.state.uncompletedItemCount - 1;
         this.setState({
             content : data,
-            uncompletedItemCount : data.length,
+            uncompletedItemCount : uncompletedItemCountNew,
+            completedItemCount : completedItemCountNew,
             isSelectAll : isSelectAllNew,
             existListItem : existListItemNew
         })
@@ -125,12 +128,12 @@ class TodoMainPart extends React.Component{
         const todoOperation = !this.state.existListItem ? null : (
             <TodoOperationBar
                 uncompletedItemCount = {this.state.uncompletedItemCount}
-                completedItemSum = {this.state.completedItemSum}
+                completedItemCount = {this.state.completedItemCount}
                 deleteAllCompletedTodoItem = {this.deleteAllCompletedTodoItem.bind(this)}
                 changeFilterOptions = {info => this.changeFilterOptions(info)}
             />);
         return(
-            <div className="todo-options">
+            <div>
                 <NewTodo 
                     addTodoItemContent = {this.addTodoItemContent.bind(this)}
                     IsAllToggleChecked = {this.IsAllToggleChecked.bind(this)}

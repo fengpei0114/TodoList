@@ -55,7 +55,7 @@ class TodoOperationBar extends React.Component{
         this.props.changeFilterOptions(info);
     }
     render(){
-        const clearComplete = this.props.completedItemSum != 0 ?(
+        const clearComplete = this.props.completedItemCount != 0 ?(
             <button className = "todo-options__clear-operation--have-content">
                 clear completed
             </button>):(
